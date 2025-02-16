@@ -11,11 +11,12 @@ jobs:
 
             - name: Multiple commands
               run: |
-                   echo "My first workflow"
-                   ls -lart
-                   cat README.md
+                echo "My first workflow"
+                ls -lart
+                cat README.md
+
             - name: generating ASCII
-              run: cowsay -e hh <hello>
+              run: cowsay -f dragon "Run for cover, I am gragon" >> dragon.txt
         
 
         
