@@ -8,13 +8,16 @@ jobs:
         steps:
             - name: checkout actions
               uses: actions/checkout@v4
-              
-            - name: Welcome message
-              run: echo "My first workflow"
-            - name: List file
-              run: ls
 
-            - name: Read file
-              run: cat README.md
+            - name: Multiple commands
+              run: |
+                   echo "My first workflow"
+                   ls -lart
+                   cat README.md
+            - name: generating ASCII
+              run: cowsay -e hh <hello>
+        
+
+        
 
 
