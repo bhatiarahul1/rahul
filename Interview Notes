@@ -82,3 +82,80 @@ The worker nodes are where the actual applications (containers) run.
     Handles routing, NAT, and forwarding.
 
     🧠 Analogy: Acts as a network traffic officer, making sure data reaches the right pods.
+
+
+
+
+
+###############################################
+
+📦 Namespaced Resources
+
+These resources exist within a specific namespace, providing a way to partition and organize resources within a single cluster. Each namespaced resource is isolated from those in other namespaces, allowing for multi-tenancy and resource management.​
+Percona+2kubecost.com+2Medium+2
+
+Examples include:
+
+    Pods
+
+    Services
+
+    Deployments
+
+    ConfigMaps
+
+    Secrets
+
+    Ingresses​
+    plural.sh+8Kubernetes+8Reddit+8
+
+When creating or managing these resources, you specify the namespace they belong to. If no namespace is specified, they default to the default namespace.​
+
+Use Cases:
+
+    Separating environments (e.g., development, staging, production)
+
+    Isolating resources for different teams or projects
+
+    Applying resource quotas and access controls per namespace​
+    Aqua+4LoftLabs - Virtual Kubernetes Clusters+4kubecost.com+4
+    ARMO+5kubecost.com+5Medium+5
+
+🌐 Cluster-Scoped Resources
+
+These resources are not confined to a namespace and are accessible across the entire cluster. They are used for configurations and components that are global to the cluster's operation.​
+
+Examples include:
+
+    Nodes
+
+    PersistentVolumes
+
+    Namespaces themselves
+
+    ClusterRoles and ClusterRoleBindings
+
+    CustomResourceDefinitions (CRDs)​
+    plural.sh+1Reddit+1
+    Medium
+    Aqua+1Medium+1
+    Stack Overflow+5Reddit+5LoftLabs - Virtual Kubernetes Clusters+5
+
+Use Cases:
+
+    Defining cluster-wide policies and roles
+
+    Managing physical or virtual nodes
+
+    Setting up storage volumes accessible by multiple namespaces​
+    Percona
+
+🧠 Analogy
+
+Think of a Kubernetes cluster as a company building:​
+
+    Cluster-Scoped Resources: These are like the building's infrastructure—elevators, security systems, or the main power supply—that serve the entire building.​
+
+    Namespaced Resources: These are like individual offices or departments within the building, each with its own equipment, staff, and access controls.​
+
+This structure allows multiple teams to operate independently within the same cluster, ensuring organization, security, and efficient resource utilization
