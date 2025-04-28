@@ -159,3 +159,14 @@ Think of a Kubernetes cluster as a company building:​
     Namespaced Resources: These are like individual offices or departments within the building, each with its own equipment, staff, and access controls.​
 
 This structure allows multiple teams to operate independently within the same cluster, ensuring organization, security, and efficient resource utilization
+
+
+#####################
+🔹 DevOps focuses on software development lifecycles — ensuring that code moves quickly, reliably, and automatically from development to production.
+It emphasizes CI/CD pipelines, infrastructure as code, monitoring, automation, and collaboration between developers and operations.
+
+🔹 MLOps is an extension of DevOps principles to the machine learning lifecycle.
+It manages not just code, but also models, data, and experiments — automating model training, validation, deployment, and monitoring.
+It deals with additional challenges like versioning datasets, model drift, and retraining pipelines — which aren't typical concerns in standard DevOps.
+
+"DevOps is about deploying applications; MLOps is about deploying models — and models keep learning and changing with data, so the operational challenges are bigger."
