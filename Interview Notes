@@ -172,3 +172,63 @@ It deals with additional challenges like versioning datasets, model drift, and r
 "DevOps is about deploying applications; MLOps is about deploying models — and models keep learning and changing with data, so the operational challenges are bigger."
 "Think of DevOps as managing a well-defined assembly line producing identical products. MLOps, however, is like managing a research lab where experiments continuously evolve, and outcomes are uncertain, requiring constant oversight and adaptation."​
 
+###########################################################################################
+n Kubernetes, pods communicate with each other using networking primitives provided by the cluster's network model. Here’s a clear breakdown of how that works:
+🔗 1. Pod-to-Pod Communication (within a Node or across Nodes)
+
+    Flat, routable network: Every pod gets its own unique IP address. This means:
+
+        Pods can communicate directly via IP (without NAT).
+
+        No need to expose pods via services to communicate internally.
+
+    CNI Plugin: Kubernetes uses a Container Network Interface (CNI) plugin (like Calico, Flannel, Cilium) to set up networking across nodes so that:
+
+        Pod A on Node 1 can reach Pod B on Node 2 via their IPs.
+
+        The plugin configures routes, bridges, and IP allocation.
+
+📦 2. Pod Communication via Services
+
+    Pods are ephemeral. To communicate reliably:
+
+        Kubernetes Service gives a stable DNS name and virtual IP.
+
+        Backed by a group of pods selected via labels.
+
+        Example:
+
+            service-a.default.svc.cluster.local points to a set of pods.
+
+    Types of services:
+
+        ClusterIP (default): for internal communication.
+
+        NodePort / LoadBalancer: for external access.
+
+        Headless service: useful when you want to discover individual pod IPs (like in StatefulSets).
+
+⚙️ 3. DNS Resolution
+
+    Kubernetes runs a CoreDNS service in the cluster.
+
+    It enables pods to resolve service names like:
+
+    http://my-service.my-namespace.svc.cluster.local
+
+🔐 4. Network Policies (Optional)
+
+    By default, all pods can talk to all other pods.
+
+    You can restrict traffic using NetworkPolicies:
+
+        Define what ingress/egress is allowed based on pod labels, namespaces, and ports.
+
+        Enforced by network plugins that support them (like Calico).
+
+Summary
+Method	Use Case	Scope
+Direct IP (Pod-to-Pod)	Low-level communication/testing	Cluster-wide
+ClusterIP Service	Stable, reliable communication	Internal only
+Headless Service + DNS	Stateful sets, service discovery	Internal only
+Network Policy	Restrict or allow traffic	Security Layer
