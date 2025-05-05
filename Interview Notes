@@ -375,9 +375,31 @@ ACLs allow more granular permission settings for multiple users/groups.
 ```bash
 setfacl -m u:john:rwx file.txt
 getfacl file.txt
-```
+```#####################################################################################
+**Kubernetes In-Place Pod Vertical Scaling**
 
----
+Traditionally, modifying the resource allocation for a Kubernetes pod required a restart, potentially disrupting applications and causing downtime. In-place scaling changes this by enabling real-time CPU and memory adjustments while the pod continues running. This is particularly useful for workloads with a very low tolerance for pod evictions.
+
+What’s behind the feature gate?
+
+The new resizePolicy spec element allows you to specify how a pod reacts to a patch command that changes its resource requests, enabling changing resource requests without rescheduling the pod.
+
+The result of the change attempt is communicated as part of the pods’ status in a field called  resize (for more information on the new fields, check out the Kubernetes API documentation.)
+
+Additionally, this feature introduces the restartPolicy in the spec element for containers, allowing fine-grained control over resizing behavior and allowing the developer to choose if CPU change or Memory change should lead to rescheduling the pod.
+
+Key Features
+
+Dynamic Scaling: Modify CPU and memory allocations while pods run.
+No Restarts: Avoid downtime caused by pod restarts.
+Granular Control: Enable precise resource tuning for better efficiency.
+How It Works
+The InPlacePodVerticalScaling feature integrates seamlessly into Kubernetes to provide a more dynamic approach to resource allocation. Here’s a detailed breakdown of how it operates:
+
+Feature Gate Activation: Activating the InPlacePodVerticalScaling feature gate in your cluster configuration is required to enable this functionality. This allows the kubelet on each node to detect and process resource updates dynamically.
+Dynamic Resource Updates via Kube API: With the feature enabled, the kubelet directly applies resource changes to running pods without requiring restarts. Supported container runtimes (e.g., containerd v1.6.9 or later) ensure these updates are applied efficiently. If constraints like insufficient free memory or CPU prevent the changes, the pod follows the regular flow: it is recreated and rescheduled.
+Pod Spec Adjustments: The resizePolicy field dictates how CPU and memory adjustments are handled. For instance, you can set NotRequired for live updates without restarts or RestartContainer to force a restart when a specific resource is modified.
+
 
 
 
