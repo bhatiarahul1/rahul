@@ -400,6 +400,40 @@ Feature Gate Activation: Activating the InPlacePodVerticalScaling feature gate i
 Dynamic Resource Updates via Kube API: With the feature enabled, the kubelet directly applies resource changes to running pods without requiring restarts. Supported container runtimes (e.g., containerd v1.6.9 or later) ensure these updates are applied efficiently. If constraints like insufficient free memory or CPU prevent the changes, the pod follows the regular flow: it is recreated and rescheduled.
 Pod Spec Adjustments: The resizePolicy field dictates how CPU and memory adjustments are handled. For instance, you can set NotRequired for live updates without restarts or RestartContainer to force a restart when a specific resource is modified.
 
+####################################################################################################
+By default, SonarQube uses port 9000 for incoming HTTP connections. 
+This is specified in the SonarQube Server configuration file (<sonarqubeHome>/conf/sonar.properties) for a ZIP installation or as an environment variable (SONAR_WEB_PORT) for a Docker installation
+###############################################################
+Nexus Software Tool- Port 8081
+
+Nexus is a powerful repository manager designed to manage and organize artifacts throughout the software development lifecycle. 
+It serves as a centralized repository for storing, retrieving, and managing software artifacts such as JAR files, Docker images, npm packages, and other components
+
+Key Features and Benefits
+
+Centralized Artifact Management
+Nexus provides a central location for storing various types of software artifacts, ensuring consistency across development, 
+testing, and production environments. It supports version control and metadata management, allowing teams to easily access the components they need for their projects
+
+Enhanced Collaboration
+Nexus fosters collaboration among development, operations, and quality assurance teams by providing a shared platform for storing and managing artifacts. 
+It enforces access control policies, ensuring that only authorized users can access or modify the artifacts
+
+Automated Build Processes
+Nexus integrates with build tools like Maven and Gradle to automate the retrieval of dependencies from the Nexus repository. 
+It also integrates with CI/CD tools like Jenkins and GitLab, enabling automated builds and promoting artifacts across different stages of deployment pipelines
+
+
+Scalability and Versatility
+Nexus supports a wide range of programming languages and package formats, making it suitable for diverse deployment environments. 
+It can scale up to manage large volumes of artifacts, dependencies, and users without compromising performance or reliability
+
+
+Improved Stability and Reliability
+Nexus ensures that dependencies are sourced from trusted and reliable locations, reducing the risk of build failures. 
+It provides mechanisms for disaster recovery and deployment in clustered configurations, minimizing downtime and ensuring continuous access to artifacts
+
+
 
 
 
