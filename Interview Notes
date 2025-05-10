@@ -433,7 +433,27 @@ Improved Stability and Reliability
 Nexus ensures that dependencies are sourced from trusted and reliable locations, reducing the risk of build failures. 
 It provides mechanisms for disaster recovery and deployment in clustered configurations, minimizing downtime and ensuring continuous access to artifacts
 
+#############################################################################################
+In Kubernetes, Quality of Service (QoS) for a Pod determines the priority and guarantees that 
+the pod receives for CPU and memory resources, especially when the node is under resource pressure.
 
+There are three QoS classes:
+
+1. Guaranteed
+All containers in the pod have CPU and memory requests equal to limits.
+Best QoS — the pod is the last to be evicted if the node is under memory pressure.
+
+2. Burstable
+At least one container has resource requests, but not all limits are equal to requests.
+Mid-tier QoS — gets evicted before Guaranteed but after BestEffort.
+
+3. BestEffort
+No requests or limits are specified for any container.
+Lowest QoS — first to be evicted under resource pressure.
+
+Why QoS Matters
+During resource contention, Kubernetes evicts BestEffort first, then Burstable, and Guaranteed pods are the most protected.
+Helps ensure critical workloads have consistent performance.
 
 
 
