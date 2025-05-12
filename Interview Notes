@@ -455,5 +455,8 @@ Why QoS Matters
 During resource contention, Kubernetes evicts BestEffort first, then Burstable, and Guaranteed pods are the most protected.
 Helps ensure critical workloads have consistent performance.
 
+##############################################################
+Read about ingress annotations, clusterd and namespaced resources
+
 
 
