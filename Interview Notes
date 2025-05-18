@@ -457,6 +457,16 @@ Helps ensure critical workloads have consistent performance.
 
 ##############################################################
 Read about ingress annotations, clusterd and namespaced resources
+Distroless images in Docker are minimal container images that do not contain a full Linux distribution, 
+such as apt, bash, or yum. They include only the essential application dependencies and runtime libraries required to run the application
 
 
+##############################################################    
+"A Pod Disruption Budget (PDB) is a Kubernetes feature that lets you define how many pods from a set can be unavailable during voluntary disruptions 
+like node upgrades or scaling events. It helps ensure high availability of your application by preventing too many pods from going down at the same time."
+🔍 Example to Mention:
+“For example, if I have 5 replicas of a service, I can set a PDB that allows only 1 pod to be unavailable at a time. 
+This way, Kubernetes won’t evict more than one pod during maintenance or updates, ensuring the service stays up.”
 
+
+##############################################################
